@@ -230,11 +230,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   background: {fileID: 1434011784}
   foreground: {fileID: 1173108131}
-  tiles: []
+  tiles:
+  - {fileID: 11400000, guid: 71e0eee271f40ed4fa767373a8bac974, type: 2}
+  - {fileID: 11400000, guid: 99b194de41dac8340b3d40e2185a48a8, type: 2}
+  - {fileID: 11400000, guid: c4b6e99502a5f8649806513a70a08d49, type: 2}
+  - {fileID: 11400000, guid: 3774daa4fa5785b43aa5a621c481b5d2, type: 2}
   probability:
-  - 10
+  - 2
   - 5
-  - 7
+  - 8
+  - 10
+  size: {x: 15, y: 15}
 --- !u!1 &1173108128
 GameObject:
   m_ObjectHideFlags: 0
@@ -308,7 +314,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16

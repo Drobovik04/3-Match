@@ -12,13 +12,14 @@ public class GameManager : MonoBehaviour
     private Tile[] tiles;
     [SerializeField]
     private float[] probability;
-    private Vector3 leftUpCorner;
+    [SerializeField]
     private Vector2Int size;
+    private Vector3 leftUpCorner;
+
     private float weight;
     private float[] probabilityForFruits;
     private void Start()
     {
-        size = background.GetComponent<BackgroundPart>().GetSize();
         leftUpCorner = background.tileAnchor + new Vector3(-size.x, size.y, 0);
         weight = probability.Sum();
         probabilityForFruits = new float[probability.Length];
@@ -36,15 +37,16 @@ public class GameManager : MonoBehaviour
         {
             for (int j = 0; j < size.y; j++)
             {
-                foreground.SetTile(new Vector3Int(i - size.x/2, j - size.y/2) - Vector3Int.RoundToInt(foreground.tileAnchor), tiles[ChooseTile(Random.Range(0, 1))]);
+                foreground.SetTile(new Vector3Int(i - size.x/2, j - size.y/2) - Vector3Int.RoundToInt(foreground.tileAnchor), tiles[ChooseTile(Random.Range(0, 1f))]);
             }
         }
     }
     private void CalculateProbability()
     {
-        for (int i = 0; i < probabilityForFruits.Length; i++)
+        probabilityForFruits[0] = probability[0]/weight;
+        for (int i = 1; i < probabilityForFruits.Length; i++)
         {
-            probabilityForFruits[i] = probability[i] / weight;
+            probabilityForFruits[i] = (probability[i] / weight) + probabilityForFruits[i - 1];
         }
     }
     private int ChooseTile(float prob)
