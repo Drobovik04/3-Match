@@ -1,35 +1,45 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.Tilemaps;
+using Random = UnityEngine.Random;
+using DG.Tweening;
 
 public class GameManager : MonoBehaviour
 {
     [SerializeField]
-    private Tilemap background, foreground;
+    private Tilemap background;
     [SerializeField]
-    private Tile[] tiles;
+    private GameObject[] tiles;
     [SerializeField]
     private float[] probability;
     [SerializeField]
     private Vector2Int size;
     private Vector3 leftUpCorner;
-
     private float weight;
     private float[] probabilityForFruits;
+    private Camera mainCamera;
+    private RaycastHit prevObject;
+    private RaycastHit hit;
     private void Start()
     {
         leftUpCorner = background.tileAnchor + new Vector3(-size.x, size.y, 0);
         weight = probability.Sum();
         probabilityForFruits = new float[probability.Length];
+        mainCamera = Camera.main;
         CalculateProbability();
         FillField();
     }
 
     private void Update()
     {
-        
+        if (Input.GetMouseButtonDown(0))
+        {
+            IsMoveable();
+        }
     }
     private void FillField()
     {
@@ -37,7 +47,7 @@ public class GameManager : MonoBehaviour
         {
             for (int j = 0; j < size.y; j++)
             {
-                foreground.SetTile(new Vector3Int(i - size.x/2, j - size.y/2) - Vector3Int.RoundToInt(foreground.tileAnchor), tiles[ChooseTile(Random.Range(0, 1f))]);
+                Instantiate(tiles[ChooseTile(Random.Range(0, 1f))], new Vector3Int(i - size.x / 2, j - size.y / 2) - Vector3Int.RoundToInt(background.tileAnchor), Quaternion.identity);
             }
         }
     }
@@ -68,5 +78,28 @@ public class GameManager : MonoBehaviour
             return 3;
         }
         return 0;
+    }
+    private bool IsMoveable()
+    {
+        Ray fruit = mainCamera.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(fruit, out hit))
+        {
+            if (prevObject.transform==null)
+            {
+                prevObject = hit;
+                return false;
+            }
+            if (Math.Abs(hit.transform.position.x-prevObject.transform.position.x) + Math.Abs(hit.transform.position.y-prevObject.transform.position.y) == 1)
+            {
+                Move();
+            }
+            return true;
+        }
+        return false;
+    }
+    private void Move()
+    {
+        prevObject.transform.DOMove(hit.transform.position, 0.5f);
+        hit.transform.DOMove(prevObject.transform.position, 0.5f);
     }
 }

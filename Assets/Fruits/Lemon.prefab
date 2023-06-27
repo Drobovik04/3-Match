@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 6323367301403578157}
   - component: {fileID: 943511163933705448}
   - component: {fileID: 1055749776034094146}
-  - component: {fileID: -4035980881253046621}
-  m_Layer: 0
+  - component: {fileID: -6182347247904526480}
+  m_Layer: 3
   m_Name: Lemon
   m_TagString: Fruit
   m_Icon: {fileID: 0}
@@ -32,7 +32,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &943511163933705448
 SpriteRenderer:
@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b64a40743fa6cdb428a7d1e6d6b68f7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!61 &-4035980881253046621
+--- !u!61 &-6182347247904526480
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 7219458941377287584}
   - component: {fileID: 3062157058469160809}
   - component: {fileID: 1861852705236648940}
-  - component: {fileID: -452768977639607001}
-  m_Layer: 0
+  - component: {fileID: 7879075099852075054}
+  m_Layer: 3
   m_Name: Banan
   m_TagString: Fruit
   m_Icon: {fileID: 0}
@@ -32,7 +32,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3062157058469160809
 SpriteRenderer:
@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b64a40743fa6cdb428a7d1e6d6b68f7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!61 &-452768977639607001
+--- !u!61 &7879075099852075054
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

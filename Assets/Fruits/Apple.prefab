@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 8506687320469404019}
   - component: {fileID: 7740902494201218491}
   - component: {fileID: 1293109119123811743}
-  - component: {fileID: -4725992610232804542}
-  m_Layer: 0
+  - component: {fileID: -3196094050235042263}
+  m_Layer: 3
   m_Name: Apple
   m_TagString: Fruit
   m_Icon: {fileID: 0}
@@ -32,7 +32,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7740902494201218491
 SpriteRenderer:
@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b64a40743fa6cdb428a7d1e6d6b68f7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!61 &-4725992610232804542
+--- !u!61 &-3196094050235042263
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

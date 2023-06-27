@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 7185628096320168639}
   - component: {fileID: 8613038325324302335}
   - component: {fileID: 4666756322652988257}
-  - component: {fileID: 6792831987166771224}
-  m_Layer: 0
+  - component: {fileID: -1611044779301378823}
+  m_Layer: 3
   m_Name: Orange
   m_TagString: Fruit
   m_Icon: {fileID: 0}
@@ -32,7 +32,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8613038325324302335
 SpriteRenderer:
@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b64a40743fa6cdb428a7d1e6d6b68f7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!61 &6792831987166771224
+--- !u!61 &-1611044779301378823
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
