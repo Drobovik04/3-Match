@@ -22,14 +22,17 @@ public class GameManager : MonoBehaviour
     private float weight;
     private float[] probabilityForFruits;
     private Camera mainCamera;
-    private RaycastHit prevObject;
-    private RaycastHit hit;
+    private RaycastHit2D prevObject;
+    private RaycastHit2D hit;
+    private GameObject[,] gridInfo;
+    private int[,] gridInfoTypes;
     private void Start()
     {
         leftUpCorner = background.tileAnchor + new Vector3(-size.x, size.y, 0);
         weight = probability.Sum();
         probabilityForFruits = new float[probability.Length];
         mainCamera = Camera.main;
+        gridInfo = new GameObject[size.x, size.y];
         CalculateProbability();
         FillField();
     }
@@ -47,7 +50,9 @@ public class GameManager : MonoBehaviour
         {
             for (int j = 0; j < size.y; j++)
             {
-                Instantiate(tiles[ChooseTile(Random.Range(0, 1f))], new Vector3Int(i - size.x / 2, j - size.y / 2) - Vector3Int.RoundToInt(background.tileAnchor), Quaternion.identity);
+                int k = ChooseTile(Random.Range(0, 1f));
+                gridInfo[i,j] = Instantiate(tiles[k], new Vector3Int(i - size.x / 2, j - size.y / 2) - Vector3Int.RoundToInt(background.tileAnchor), Quaternion.identity);
+                gridInfoTypes[i, j] = k;
             }
         }
     }
@@ -81,8 +86,7 @@ public class GameManager : MonoBehaviour
     }
     private bool IsMoveable()
     {
-        Ray fruit = mainCamera.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(fruit, out hit))
+        if (hit=Physics2D.Raycast(mainCamera.ScreenToWorldPoint(Input.mousePosition),Vector2.zero))
         {
             if (prevObject.transform==null)
             {
@@ -92,6 +96,8 @@ public class GameManager : MonoBehaviour
             if (Math.Abs(hit.transform.position.x-prevObject.transform.position.x) + Math.Abs(hit.transform.position.y-prevObject.transform.position.y) == 1)
             {
                 Move();
+                prevObject = new RaycastHit2D();
+                hit = new RaycastHit2D();
             }
             return true;
         }
