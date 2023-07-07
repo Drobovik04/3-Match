@@ -33,6 +33,7 @@ public class GameManager : MonoBehaviour
         probabilityForFruits = new float[probability.Length];
         mainCamera = Camera.main;
         gridInfo = new GameObject[size.x, size.y];
+        gridInfoTypes = new int[size.x, size.y];
         CalculateProbability();
         FillField();
     }
