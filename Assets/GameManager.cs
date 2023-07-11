@@ -97,9 +97,9 @@ public class GameManager : MonoBehaviour
             if (Math.Abs(hit.transform.position.x-prevObject.transform.position.x) + Math.Abs(hit.transform.position.y-prevObject.transform.position.y) == 1)
             {
                 Move();
-                prevObject = new RaycastHit2D();
-                hit = new RaycastHit2D();
             }
+			prevObject = new RaycastHit2D();
+            hit = new RaycastHit2D();
             return true;
         }
         return false;
